@@ -49,4 +49,9 @@ public class L16最接近的三数之和 {
         return result;
     }
 
+
+    public static void main(String[] args){
+        System.out.println("..hello world.");
+    }
+
 }
