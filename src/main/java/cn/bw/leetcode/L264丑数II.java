@@ -19,8 +19,9 @@ public class L264丑数II {
      */
 
     public int nthUglyNumber(int n) {
-
+        //notice  n
         int[] dp = new int[n];
+        //notice:  0 -> 1
         dp[0]=1;
         int a=0,b=0,c=0;
 
