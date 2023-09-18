@@ -18,8 +18,10 @@ public class L312戳气球 {
 
 
         for(int i=1;i<=len;i++){
+            //notice  left+i-1<=len
             for(int left=1;left+i-1<=len;left++){
                 int right=left+i-1;
+                //notice   k<=right
                 for(int k=left;k<=right;k++){
                     dp[left][right]= Math.max(dp[left][right],
                             dp[left][k-1] + dp[k+1][right]+ s[left-1]*s[right+1]*s[k]);
@@ -27,6 +29,7 @@ public class L312戳气球 {
             }
         }
 
+        //notice 1:len
         return dp[1][len];
     }
 
