@@ -18,7 +18,12 @@ public class L79单词搜索 {
                               int x, int y, int k) {
         int rows = board.length;
         int cols = board[0].length;
-        if (x < 0 || y < 0 || x >= rows || y >= cols || board[x][y] != word.charAt(k)) return false;
+        if (x < 0 ||
+                y < 0 ||
+                x >= rows ||
+                y >= cols ||
+                board[x][y] != word.charAt(k))
+            return false;
         if (k == word.length()-1) return true;
 
         board[x][y] = '.';
