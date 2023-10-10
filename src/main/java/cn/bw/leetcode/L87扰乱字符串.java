@@ -1,5 +1,9 @@
 package cn.bw.leetcode;
 
+/***
+ * 思路：
+ * dp[i][j][k]  表示  s1 从i开始, 到 s2 从j开始 到k个长度 是否可以
+ */
 public class L87扰乱字符串 {
 
     public boolean isScramble(String s1, String s2) {
