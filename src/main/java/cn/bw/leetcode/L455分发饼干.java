@@ -12,11 +12,11 @@ public class L455分发饼干 {
         int glen=g.length, slen=s.length;
         int rs =0;
 
-        for(int i=0,j=0;i<glen && j<slen;i++,j++){
-            while (j<slen && g[i]>s[j]){
-                j++;
+        for(int gi=0,si=0;gi<glen && si<slen;gi++,si++){
+            while (si<slen && g[gi]>s[si]){
+                si++;
             }
-            if(j<slen){
+            if(si<slen){
                 rs++;
             }
         }
