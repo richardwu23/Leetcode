@@ -17,7 +17,7 @@ public class L215数组中的第K个最大元素 {
 
     }
 
-    private int quickSelect(int[] nums, int left, int right, int kthSmall){
+    int quickSelect(int[] nums, int left, int right, int kthSmall){
 
         if(right==left){
             return nums[left];
@@ -36,7 +36,7 @@ public class L215数组中的第K个最大元素 {
         }
     }
 
-    private int partition(int[] nums, int left, int right, int pivotIdx){
+    int partition(int[] nums, int left, int right, int pivotIdx){
 
         int pivot = nums[pivotIdx];
         swap(nums,pivotIdx, right);
@@ -52,7 +52,7 @@ public class L215数组中的第K个最大元素 {
         return idx;
     }
 
-    private void swap(int[] nums, int i, int j){
+    void swap(int[] nums, int i, int j){
         int t = nums[i];
         nums[i]=nums[j];
         nums[j]=t;

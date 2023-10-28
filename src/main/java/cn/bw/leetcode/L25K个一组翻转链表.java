@@ -22,7 +22,7 @@ public class L25K个一组翻转链表 {
 
     public ListNode reverse(ListNode head, ListNode tail){
         ListNode pre = null, next=null;
-
+        //notice :  head !=tail
         while (head!=tail){
             next = head.next;
             head.next = pre;
