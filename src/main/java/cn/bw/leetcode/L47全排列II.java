@@ -5,6 +5,7 @@ import java.util.*;
 public class L47全排列II {
 
     public List<List<Integer>> permuteUnique(int[] nums) {
+        //notice:  sort
         Arrays.sort(nums);
         List<List<Integer>> rs = new ArrayList<>();
         Deque<Integer> path = new ArrayDeque<>();
@@ -18,7 +19,7 @@ public class L47全排列II {
                            boolean[] v,
                            Deque<Integer> path,
                            List<List<Integer>> rs){
-        if(path.size()==nums.length){
+        if(idx==nums.length){
             rs.add(new ArrayList<>(path));
             return;
         }

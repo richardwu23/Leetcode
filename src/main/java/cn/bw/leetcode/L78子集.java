@@ -21,7 +21,7 @@ public class L78子集 {
                            Deque<Integer> path,
                            List<List<Integer>> rs){
         rs.add(new ArrayList<>(path));
-        if(path.size()==nums.length){
+        if(idx==nums.length){
             return;
         }
 

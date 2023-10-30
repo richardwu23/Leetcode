@@ -29,6 +29,7 @@ public class L662二叉树的最大宽度 {
                             cur.right.left,
                             cur.right.right));
             }
+            //notice:  end-start+1
             rs = Math.max(rs, end - start + 1);
         }
         return rs;
