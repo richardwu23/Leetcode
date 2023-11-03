@@ -38,8 +38,6 @@ public class L117填充每个节点下一个右侧节点指针II {
 
                 pre = cur;
             }
-
-
         }
         return root;
 
