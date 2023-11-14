@@ -6,6 +6,8 @@ package cn.bw.leetcode;
  * 1.怎么确定一个前缀下 所有子节点 个数
  * 2.如果 第k个 在当前前缀下，怎么继续往下面节点找
  * 3.如果 第k个不在当前前缀下， 那么怎么继续扩大前缀 ，增加范围
+ *
+ * https://leetcode.cn/problems/k-th-smallest-in-lexicographical-order/solutions/27645/ben-ti-shi-shang-zui-wan-zheng-ju-ti-de-shou-mo-sh/
  */
 public class L440字典序第K小数字 {
 
