@@ -17,20 +17,21 @@ public class L440字典序第K小数字 {
         while (cur < k) {
             //获取当前节点下 所有 节点和
             long cnt = getCount(pre, n);
-            //不在当前前缀下
-            if (cur + cnt <= k) {
+
+            if(cur+cnt > k){
+                pre *=10;
+                cur++;
+            }else {
                 cur += cnt;
                 pre++;
-            } else {
-                //在当前前缀下
-                cur += 1;
-                pre *= 10;
             }
+
         }
 
         return Integer.parseInt(String.valueOf(pre));
     }
 
+    // next  is next pre
     private long getCount(long prefix, long n) {
         long cnt=0, cur=prefix, next=prefix+1;
         while (cur<=n){
