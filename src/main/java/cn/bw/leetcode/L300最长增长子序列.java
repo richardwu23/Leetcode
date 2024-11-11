@@ -3,6 +3,7 @@ package cn.bw.leetcode;
 
 /***
  * 二分法排序， 想象成 摆扑克牌 分堆。  top[i] 是每堆 最小
+ * 最终的left 表示元素 cur 应该放的位置
  */
 public class L300最长增长子序列 {
 
@@ -23,6 +24,7 @@ public class L300最长增长子序列 {
                     left=mid+1;
                 }
             }
+            //说明 cur 应该放新堆上
             if(left==piles){
                 piles++;
             }
