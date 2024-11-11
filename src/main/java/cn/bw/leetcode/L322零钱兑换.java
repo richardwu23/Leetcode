@@ -4,6 +4,10 @@ import java.util.Arrays;
 
 public class L322零钱兑换 {
 
+    /**
+     dp, 背包问题
+     dp[i] 表示 凑成 i 的 最少个数
+     */
     public int coinChange(int[] coins, int amount) {
 
 
