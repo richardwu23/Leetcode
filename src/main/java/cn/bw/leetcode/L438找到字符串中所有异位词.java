@@ -15,6 +15,7 @@ public class L438找到字符串中所有异位词 {
 
         int[] sc=new int[26], pc=new int[26];
 
+        // 先取 p 长度 范围
         for(int i=0;i<plen;i++){
             pc[p.charAt(i)-'a']++;
             sc[s.charAt(i)-'a']++;

@@ -2,6 +2,10 @@ package cn.bw.leetcode;
 
 public class L5最长回文子串 {
 
+    /**
+     * dp
+     *
+     */
     public String longestPalindrome(String s) {
         int len = s.length();
         boolean[][] dp = new boolean[len][len];
