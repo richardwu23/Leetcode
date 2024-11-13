@@ -2,6 +2,11 @@ package cn.bw.leetcode;
 
 public class L152乘积最大子数组 {
 
+    /**
+     * 因为 负负 得正。所以要维护
+     * 当前最大值，当前最小值， 前一个最大值。
+     *
+     */
     public int maxProduct(int[] nums) {
 
         int result=nums[0], min=nums[0],max=nums[0];

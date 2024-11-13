@@ -2,6 +2,11 @@ package cn.bw.leetcode;
 
 public class L42接雨水 {
 
+    /**
+     * 多解法
+     *
+     *
+     */
     public int trap(int[] height) {
 
         int len=height.length;
