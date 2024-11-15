@@ -2,6 +2,10 @@ package cn.bw.leetcode;
 
 public class L1143最长公共子序列 {
 
+    /**
+     * dp解法
+     * dp[i][j] 表示 text1 的 前i 和 text2的 前j 是公共子序列的长度
+     */
     public int longestCommonSubsequence(String text1, String text2) {
         int len1=text1.length(), len2=text2.length();
 

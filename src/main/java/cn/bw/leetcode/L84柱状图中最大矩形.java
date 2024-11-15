@@ -11,7 +11,7 @@ public class L84柱状图中最大矩形 {
         int rs =0;
         stack.push(-1);
         for(int i=0;i<len;i++){
-
+            //找到降序的 柱子
             while (stack.peek()!=-1 && heights[stack.peek()]>=heights[i]){
                 int h = heights[stack.pop()];
                 int w = i-stack.peek() -1;
