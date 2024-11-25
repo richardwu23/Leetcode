@@ -13,16 +13,18 @@ public class L3无重复字符的最长子串 {
 
     //将 i 初始化为 -1 可以简化计算并确保初始的无重复子串从索引 0 开始时能正确计入长度。
     public int lengthOfLongestSubstring(String s) {
-        Map<Character,Integer> dict = new HashMap<>();
-        int l=-1, res=0, len=s.length();
+        Map<Character,Integer> map = new HashMap<>();
+        int l=-1, ans=0, len=s.length();
         for(int r=0;r<len;r++){
-            if(dict.containsKey(s.charAt(r))){
-                l = Math.max(l, dict.get(s.charAt(r)));
+            char c = s.charAt(r);
+            if(map.containsKey(c)){
+                l = Math.max(l,map.get(c));
             }
-            dict.put(s.charAt(r),r);
-            res = Math.max(res, r-l);
+            map.put(c,r);
+            ans = Math.max(ans,r-l);
         }
-        return res;
+
+        return ans;
 
     }
 
