@@ -6,7 +6,6 @@ public class L23合并k个升序链表 {
 
     public ListNode mergeKLists(ListNode[] lists) {
         int len=lists.length;
-
         return merge(lists,0,len-1);
     }
 

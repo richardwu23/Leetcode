@@ -4,31 +4,32 @@ import cn.bw.leetcode.common.TreeNode;
 
 public class L124二叉树中的最大路径和 {
 
-    int max = Integer.MIN_VALUE;
+    int maxSum = Integer.MIN_VALUE;
+
     public int maxPathSum(TreeNode root) {
-        if(root==null)return 0;
-        getMax(root);
-        return max;
+        maxGain(root);
+        return maxSum;
     }
 
-    int getMax(TreeNode cur){
-        int left=0,right=0;
-        int val=cur.val;
-
-        if(cur.left!=null){
-            left= getMax(cur.left);
+    public int maxGain(TreeNode node) {
+        if (node == null) {
+            return 0;
         }
 
-        if(cur.right!=null){
-            right=getMax(cur.right);
-        }
+        // 递归计算左右子节点的最大贡献值
+        // 只有在最大贡献值大于 0 时，才会选取对应子节点
+        int leftGain = Math.max(maxGain(node.left), 0);
+        int rightGain = Math.max(maxGain(node.right), 0);
 
-        val += Math.max(0,left)+Math.max(0,right);
-        max = Math.max(max,val);
+        // 节点的最大路径和取决于该节点的值与该节点的左右子节点的最大贡献值
+        int priceNewpath = node.val + leftGain + rightGain;
 
-        return cur.val + Math.max(Math.max(left,0),Math.max(0,right));
+        // 更新答案
+        maxSum = Math.max(maxSum, priceNewpath);
+
+        // 返回节点的最大贡献值
+        return node.val + Math.max(leftGain, rightGain);
     }
-
 
 
 }
