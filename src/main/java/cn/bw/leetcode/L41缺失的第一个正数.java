@@ -1,6 +1,9 @@
 package cn.bw.leetcode;
 
 public class L41缺失的第一个正数 {
+    //利用了数组下标和正整数的映射关系，通过就地交换的方式，
+    // 把正整数放到它“应该在的位置”，然后扫描数组，
+    // 找到第一个位置 i 使得 nums[i] != i + 1，即为答案。
     public int firstMissingPositive(int[] nums) {
         // 边界条件处理：如果数组为空或长度为0，返回 1
         if (nums == null || nums.length == 0) return 1;

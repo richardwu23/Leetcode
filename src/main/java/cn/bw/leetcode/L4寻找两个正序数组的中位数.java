@@ -32,6 +32,7 @@ public class L4寻找两个正序数组的中位数 {
         //选择两个数组中第 k/2 个元素进行比较
         int i1=s1+Math.min(len1,k/2)-1;
         int i2=s2+Math.min(len2,k/2)-1;
+
         // 如果 nums1 的第 i1 个元素大于 nums2 的第 i2 个元素,
         if(nums1[i1]>nums2[i2]){
             // 排除 nums2 的 [s2, i2] 部分，并更新 k
