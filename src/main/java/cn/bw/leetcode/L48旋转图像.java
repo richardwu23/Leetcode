@@ -9,6 +9,7 @@ public class L48旋转图像 {
         int rows = matrix.length;
         // **第一步：矩阵转置**
         // 将矩阵的第 i 行第 col 列元素与第 col 行第 i 列元素互换
+        // col = i 起始的意思是 对角线的 右侧开始翻
         for (int i = 0; i < rows; i++) {
             for (int col = i; col < rows; col++) {
                 int t = matrix[i][col];

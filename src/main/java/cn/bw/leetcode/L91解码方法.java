@@ -2,6 +2,13 @@ package cn.bw.leetcode;
 
 public class L91解码方法 {
 
+    /**
+     * 每个数字 1 到 26 可以分别表示字母 A 到 Z。
+     * 输入字符串 s 仅包含数字，可能包含 0，但不会有无效的编码。
+     *
+     * dp[i] 表示： 字符串 s 的前 i 个字符可以被解码的总方法数。
+     *
+     */
     public int numDecodings(String s) {
 
         int len=s.length();
@@ -14,10 +21,12 @@ public class L91解码方法 {
 
         for(int i=2;i<=len;i++){
 
+            //如果当前字符 s[i-1]（索引从 0 开始）不是 '0'，则单独解码它是有效的
             if(s.charAt(i-1)!='0'){
                 dp[i]=dp[i-1];
             }
 
+            //如果当前字符和前一个字符组合成的两位数（twoDigits）在 [10, 26] 范围内，则可以解码为一个双字符的字母
             int twoDigits=(s.charAt(i-2)-'0') * 10+
                     s.charAt(i-1)-'0';
 

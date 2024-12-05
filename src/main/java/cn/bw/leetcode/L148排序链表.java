@@ -4,6 +4,20 @@ import cn.bw.leetcode.common.ListNode;
 
 public class L148排序链表 {
 
+    /**
+     * 思路：
+     * 1.快慢指针分割链表
+     * 2.合并链表
+
+     * 注意：
+     * fast.next != null && fast.next.next != null：
+     * 保证快指针在链表中未越界。
+     * 慢指针在链表长度为偶数时停在前半部分最后一个节点。
+     * fast != null && fast.next != null：
+     * 快指针停留在链表的最后一个节点时，慢指针可能偏右，不符合分割链表的要求。
+     *
+     *
+     */
     public ListNode sortList(ListNode head) {
 
         if(head==null ||head.next==null){

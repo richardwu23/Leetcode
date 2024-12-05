@@ -5,20 +5,14 @@ public class L74搜索二维矩阵 {
 
     //解法： 把二维数组 看作一个 一维数组， 关键表达式 mid/cols, mid%cols
     public boolean searchMatrix(int[][] matrix, int target) {
-        // 如果矩阵为空或第一行为空，直接返回 false
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             return false;
         }
-
-        // 获取矩阵的行数和列数
         int rows = matrix.length;
         int cols = matrix[0].length;
 
-        // 定义二分查找的左右边界
         int left = 0;
         int right = rows * cols - 1;
-
-        // 开始二分查找
         while (left <= right) {
             // 计算中间位置索引
             int mid = left + (right - left) / 2;

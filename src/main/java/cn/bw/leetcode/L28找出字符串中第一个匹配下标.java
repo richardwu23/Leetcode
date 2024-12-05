@@ -6,6 +6,7 @@ public class L28找出字符串中第一个匹配下标 {
         int hlen=haystack.length(), nlen=needle.length();
         char[] hc=haystack.toCharArray(), nc=needle.toCharArray();
 
+        //notice  i<=hlen-nlen;
         for(int i=0;i<=hlen-nlen;i++){
             int hi=i, ni=0;
 
