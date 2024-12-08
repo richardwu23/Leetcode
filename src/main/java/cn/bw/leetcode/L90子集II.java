@@ -5,29 +5,25 @@ import java.util.*;
 public class L90子集II {
     public List<List<Integer>> subsetsWithDup(int[] nums) {
         Arrays.sort(nums);
-        List<List<Integer>> rs = new ArrayList<>();
-        Deque<Integer> path = new ArrayDeque<>();
-        backtrack(nums,0,path,rs);
-        return rs;
+        Deque<Integer> path = new LinkedList<>();
+        List<List<Integer>> ans = new LinkedList<>();
+        backtrack(nums,0,path,ans);
+        return ans;
     }
 
-    private void backtrack(int[] nums,
-                           int idx,
-                           Deque<Integer> path,
-                           List<List<Integer>> rs){
-        rs.add(new ArrayList<>(path));
-        if(path.size()==nums.length)return;
-
-        for(int i=idx;i<nums.length;i++){
-
-            if(i>idx&&nums[i]==nums[i-1]){
-                continue;
-            }
-
+    void backtrack(int[] nums,
+                   int idx,
+                   Deque<Integer> path,
+                   List<List<Integer>> ans){
+        ans.add(new LinkedList<>(path));
+        if(idx==nums.length){
+            return;
+        }
+        for(int i=idx;i< nums.length;i++){
+            if(i>idx && nums[i]==nums[i-1])continue;
             path.add(nums[i]);
-            backtrack(nums, i+1, path, rs);
+            backtrack(nums, i+1, path, ans);
             path.removeLast();
-
         }
     }
 

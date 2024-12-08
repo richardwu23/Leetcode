@@ -15,7 +15,12 @@ public class L22括号生成 {
         return result;
     }
 
-    private void backtrack(List<String> result, char[] current, int pos, int open, int close, int max) {
+    private void backtrack(List<String> result,
+                           char[] current,
+                           int pos,
+                           int open,
+                           int close,
+                           int max) {
         // 如果当前构建的字符数组长度等于最大长度，加入结果
         if (pos == max * 2) {
             result.add(new String(current));

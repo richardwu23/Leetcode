@@ -31,7 +31,7 @@ public class L79单词搜索 {
         char temp = board[x][y];
         board[x][y] = '.';
 
-        // 尝试从当前单元格的上下左右四个方向继续搜索
+        // 尝试上下左右四个方向继续搜索
         boolean result =
                 backtrack(board, x + 1, y, word, k + 1) || // 向下
                         backtrack(board, x - 1, y, word, k + 1) || // 向上
@@ -39,7 +39,6 @@ public class L79单词搜索 {
                         backtrack(board, x, y - 1, word, k + 1);   // 向左
         // 回溯：恢复当前单元格的值
         board[x][y] = temp;
-        // 返回是否找到结果
         return result;
     }
 
