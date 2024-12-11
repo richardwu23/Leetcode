@@ -4,7 +4,7 @@ public class L42接雨水 {
 
     /**
      * 双指针
-     *
+     * 左右，看哪一侧的低，更新低的一侧
      */
     public int trap(int[] height) {
         //左右 指针

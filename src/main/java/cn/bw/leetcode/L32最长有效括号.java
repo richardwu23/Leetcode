@@ -44,22 +44,34 @@ public class L32最长有效括号 {
     }
 
 
+    /**
+     * dp[i]表示以索引i结尾的最长有效括号长度
+     * 从索引1开始遍历，因为索引0无法形成有效括号
+     * 只有右括号有可能构成有效括号
+     * 情况1: 当前右括号的前一个字符是左括号，即 "()" 形式
+     * 如果 i > 1，则加上 dp[i - 2]（"()"前面可能的有效长度）；否则直接是 2
+     * i - dp[i - 1] - 1 表示当前 i 位置的字符对应的有效括号之前的那个可能与当前 ')' 匹配的 '(' 的索引
+     *
+     *
+     */
     public int longestValidParentheses1(String s) {
-
         int len = s.length();
         int result = 0;
         int[] dp = new int[len];
         for (int i = 1; i < len; i++) {
+
             if (s.charAt(i) == ')') {
+
                 if (s.charAt(i - 1) == '(') {
-                    dp[i] = (i > 2 ? dp[i - 2] : 0) + 2;
-                } else if ((i - dp[i - 1] - 1 >= 0) && s.charAt(i - dp[i - 1] - 1) == '(') {
-                    dp[i] = dp[i - 1] + ((i - dp[i - 1] - 2) > 0 ? dp[i - dp[i - 1] - 2] : 0) + 2;
+                    dp[i] = (i > 1 ? dp[i - 2] : 0) + 2;
+                } else if (i - dp[i - 1] - 1 >= 0 && s.charAt(i - dp[i - 1] - 1) == '(') {
+                    dp[i] = dp[i - 1] +
+                            ((i - dp[i - 1] - 2) >= 0 ? dp[i - dp[i - 1] - 2] : 0) +
+                            2;
                 }
-                result = Math.max(result,dp[i]);
+                result = Math.max(result, dp[i]);
             }
         }
-
         return result;
 
     }
