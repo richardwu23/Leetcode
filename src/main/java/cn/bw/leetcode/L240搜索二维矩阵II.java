@@ -16,14 +16,15 @@ public class L240搜索二维矩阵II {
 
         // 当没有越过矩阵的边界时继续搜索
         while (row < rows && col >= 0) {
-            if (matrix[row][col] == target) {
-                return true; // 找到目标值，返回 true
+            if (matrix[row][col]< target) {
+                // 如果当前元素小于目标值，往下移动一行
+                row++;
             } else if (matrix[row][col] > target) {
                 // 如果当前元素大于目标值，往左移动一列
                 col--;
             } else {
-                // 如果当前元素小于目标值，往下移动一行
-                row++;
+
+                return true;
             }
         }
 

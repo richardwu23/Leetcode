@@ -3,6 +3,46 @@ package cn.bw.leetcode;
 import java.util.Random;
 
 public class L912排序数组 {
+
+
+
+
+    public int[] sortArray1(int[] nums) {
+
+        return mergeSort(nums,0,nums.length-1);
+    }
+
+    public static int[] mergeSort(int[] nums, int start, int end) {
+        if (start == end) {
+            final int num = nums[start];
+            return new int[]{num};
+        }
+        final int mid = (start + end) / 2;
+        final int[] left = mergeSort(nums, start, mid);
+        final int[] right = mergeSort(nums, mid + 1, end);
+
+        int[] result = new int[left.length + right.length];
+        int l = 0, r = 0, i = 0;
+        while (l < left.length && r < right.length) {
+            if (left[l] < right[r]) {
+                result[i++] = left[l++];
+            } else {
+                result[i++] = right[r++];
+            }
+        }
+        while (i < result.length) {
+            if (l < left.length) {
+                result[i++] = left[l++];
+            } else {
+                result[i++] = right[r++];
+            }
+
+        }
+        return result;
+
+    }
+
+
     // 快速排序 2：双指针（指针对撞）快速排序
 
     /**

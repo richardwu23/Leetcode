@@ -14,6 +14,7 @@ public class L19删除链表倒数第N个结点 {
             head = head.next;
             return head;
         }
+        //注意， front.next != null 表示 front 在倒数第一，back 在 n+1
         while (front.next!=null){
             front = front.next;
             back = back.next;

@@ -3,6 +3,8 @@ package cn.bw.leetcode;
 import cn.bw.leetcode.common.TreeNode;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Map;
 
 /**
@@ -14,8 +16,31 @@ import java.util.Map;
 public class L3无重复字符的最长子串 {
 
 
-    //将 i 初始化为 -1 可以简化计算并确保初始的无重复子串从索引 0 开始时能正确计入长度。
     public int lengthOfLongestSubstring(String s) {
+        // 使用滑动窗口
+        Set<Character> set = new HashSet<>(); // 用于存储窗口中的字符
+        int maxLength = 0; // 记录最长子串的长度
+        int left = 0; // 窗口的左边界
+
+        for (int right = 0; right < s.length(); right++) {
+            char currentChar = s.charAt(right);
+
+            // 如果当前字符已存在于集合中，则缩小窗口
+            while (set.contains(currentChar)) {
+                set.remove(s.charAt(left));
+                left++;
+            }
+
+            // 将当前字符加入集合，并更新最大长度
+            set.add(currentChar);
+            maxLength = Math.max(maxLength, right - left + 1);
+        }
+
+        return maxLength;
+    }
+
+    //将 i 初始化为 -1 可以简化计算并确保初始的无重复子串从索引 0 开始时能正确计入长度。
+    public int lengthOfLongestSubstring1(String s) {
         Map<Character,Integer> map = new HashMap<>();
         int l=-1, ans=0, len=s.length();
         for(int r=0;r<len;r++){

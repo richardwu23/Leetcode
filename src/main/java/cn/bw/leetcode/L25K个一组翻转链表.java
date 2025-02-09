@@ -5,10 +5,10 @@ import cn.bw.leetcode.common.ListNode;
 public class L25K个一组翻转链表 {
 
     public ListNode reverseKGroup(ListNode head, int k) {
-        // 如果链表为空或只有一个节点，直接返回，无需翻转
+
         if (head == null || head.next == null) return head;
 
-        // 定位当前组的结尾（第 k 个节点后一个位置）
+        // tail 最终指向 第 k 个节点的下一个节点，不包含在需要翻转的范围内。
         ListNode tail = head;
         for (int i = 0; i < k; i++) {
             // 如果剩余节点不足 k 个，不需要翻转，直接返回原链表
@@ -26,7 +26,7 @@ public class L25K个一组翻转链表 {
         return newHead;
     }
 
-    // 翻转从 head 到 tail（不包含 tail）的链表部分
+    // 翻转的范围是 [head, tail)，即包含 head，但不包含 tail。
     public ListNode reverse(ListNode head, ListNode tail) {
         ListNode pre = null, next = null;
 

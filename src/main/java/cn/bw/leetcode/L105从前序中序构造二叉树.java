@@ -15,9 +15,13 @@ public class L105从前序中序构造二叉树 {
     }
 
     TreeNode build(int[] preorder, int[] inorder, int left, int right){
+        //left  有可能 比 right 大， 当前子树 为空
         if(left>right) return null;
-        //为什么有这行 是错误的
+
         if(left==right){
+//            核心原因：idx 是全局变量，用于在前序遍历数组中定位当前处理的节点
+            //为了让后续递归（比如构建兄弟节点或者右子树）能够正确处理下一个节点，
+            // idx 必须往前移动一位。
             idx++;
             return new TreeNode(inorder[left]);
         }

@@ -28,6 +28,7 @@ public class L34排序数组起止位置 {
 
         int left=0, right=len-1;
 
+        //left<=right
         while (left<=right){
             int mid = left+(right-left)/2;
 

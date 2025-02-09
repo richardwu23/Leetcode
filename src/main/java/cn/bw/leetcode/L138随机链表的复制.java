@@ -8,6 +8,7 @@ import java.util.Map;
 public class L138随机链表的复制 {
 
 
+        //map key 原节点， value 复制节点，
 
         public Node copyRandomList(Node head) {
             if(head==null) return null;

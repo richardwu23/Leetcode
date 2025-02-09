@@ -18,7 +18,7 @@ public class L80删除有序数组中的重复项Ii {
             if (nums[s - 2] != nums[f]) {
                 nums[s++] = nums[f];
             }
-            f++; // 移动遍历指针
+            f++;
         }
         return s;
     }

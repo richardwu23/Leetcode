@@ -49,12 +49,6 @@ public class L131分割回文串 {
         return true; // 如果所有字符都对称，则是回文
     }
 
-    // 测试方法
-    public static void main(String[] args) {
-        L131分割回文串 pp = new L131分割回文串();
-        System.out.println(pp.partition("aab"));
-    }
-
 
 
 }

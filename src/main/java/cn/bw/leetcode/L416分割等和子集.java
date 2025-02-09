@@ -20,6 +20,9 @@ public class L416分割等和子集 {
 
         for(int num:nums){
             for(int i=half;i>=num;i--){
+                //如果不选当前数字 num， dp[i] 的状态保持不变。
+                //如果选当前数字 num，检查 dp[i - num] 是否为 true，
+                // 如果是，则 dp[i] 也为 true。
                 dp[i]=dp[i]||dp[i-num];
             }
         }

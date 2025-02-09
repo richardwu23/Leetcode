@@ -6,10 +6,6 @@ public class L92反转链表II {
 
     /**
      * 思路：  先把左右两个节点 单独摘出来，反转 再联回去
-     *
-     *
-     *
-     *
      */
     public ListNode reverseBetween(ListNode head, int left, int right) {
 

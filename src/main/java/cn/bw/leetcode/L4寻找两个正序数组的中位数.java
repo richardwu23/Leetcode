@@ -2,7 +2,69 @@ package cn.bw.leetcode;
 
 public class L4寻找两个正序数组的中位数 {
 
+
+    /**
+     * i：数组 nums1 中分割的位置，左边有 i 个元素。
+     * j：数组 nums2 中分割的位置，左边有 j 个元素。
+
+     * 分割线将两个数组划分为“左侧”和“右侧”两部分：
+     * 左侧部分包含 i 个来自 nums1 的元素和 j 个来自 nums2 的元素。
+
+     * 左侧部分的最大值（max(nums1[i-1], nums2[j-1])）小于等于
+     * 右侧部分的最小值（min(nums1[i], nums2[j])）
+
+     * 逻辑意义：
+     * 如果 nums1[i] < nums2[j - 1]，说明 nums1[i] 太小，分割线需要右移（增大i）。
+     * 如果 nums1[i] >= nums2[j - 1]，说明 i 可能是正确分割点，分割线需要左移或保持不变。
+     *
+     */
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        // 确保 nums1 是较短的数组
+        if (nums1.length > nums2.length) {
+            return findMedianSortedArrays(nums2, nums1);
+        }
+
+        int m = nums1.length;
+        int n = nums2.length;
+        int totalLeft = (m + n + 1) / 2;
+
+        int left = 0, right = m;
+        while (left < right) {
+            int i = left + (right - left) / 2; // nums1 的分割位置
+            int j = totalLeft - i; // nums2 的分割位置
+
+            //nums1[i] 右侧最小， nums2[j - 1] 左侧最大
+            if (nums1[i] < nums2[j - 1]) {
+                left = i + 1; // i 需要增大
+            } else {
+                right = i; // i 需要减小
+            }
+        }
+
+        int i = left;
+        int j = totalLeft - i;
+
+        // 分割线左边的最大值
+        int nums1LeftMax = (i == 0) ? Integer.MIN_VALUE : nums1[i - 1];
+        int nums2LeftMax = (j == 0) ? Integer.MIN_VALUE : nums2[j - 1];
+        int leftMax = Math.max(nums1LeftMax, nums2LeftMax);
+
+        if ((m + n) % 2 == 1) {
+            return leftMax;
+        }
+
+        // 分割线右边的最小值
+        int nums1RightMin = (i == m) ? Integer.MAX_VALUE : nums1[i];
+        int nums2RightMin = (j == n) ? Integer.MAX_VALUE : nums2[j];
+        int rightMin = Math.min(nums1RightMin, nums2RightMin);
+
+        // 如果总长度为偶数，中位数是左右两部分的平均值
+        return (leftMax + rightMin) / 2.0;
+    }
+
+
+
+    public double findMedianSortedArrays0(int[] nums1, int[] nums2) {
         int len1=nums1.length, len2=nums2.length;
 
         int total = len1+len2;

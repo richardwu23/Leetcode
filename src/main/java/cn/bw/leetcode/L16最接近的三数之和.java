@@ -22,9 +22,10 @@ public class L16最接近的三数之和 {
 
         int len=nums.length;
         Arrays.sort(nums);
+        //注意，  初始化result
         int result=nums[0]+nums[1]+nums[2];
 
-        for(int i=0;i<len;i++){
+        for(int i=0;i<len-2;i++){
             int left=i+1, right=len-1;
 
             while (left<right){

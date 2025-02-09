@@ -12,6 +12,7 @@ public class L23合并k个升序链表 {
 
 
     public ListNode merge(ListNode[] lists,int l, int r){
+        //注意
         if(l==r){
             return lists[l];
         }

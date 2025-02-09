@@ -21,6 +21,7 @@ public class L347前k个高频元素 {
             }
         }
 
+        // 一个优先队列 (最小堆)，存储频率最小的元素优先弹出
         PriorityQueue<Integer> pq = new PriorityQueue<Integer>(new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {

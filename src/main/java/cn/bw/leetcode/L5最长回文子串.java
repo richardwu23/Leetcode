@@ -4,21 +4,21 @@ public class L5最长回文子串 {
 
     /**
      * dp
-     *
+     * dp[i][j]表示s[i..j]是否为回文
      */
     public String longestPalindrome(String s) {
         if (s == null || s.length() == 0) {
-            return ""; // 空串处理
+            return "";
         }
 
         int len = s.length();
-        boolean[][] dp = new boolean[len][len]; // dp[i][j]表示s[i..j]是否为回文
+        boolean[][] dp = new boolean[len][len];
 
         for (int i = 0; i < len; i++) {
-            dp[i][i] = true; // 单字符必定是回文
+            dp[i][i] = true;
         }
 
-        int max = 1, begin = 0; // 初始化：单字符长度为1
+        int max = 1, begin = 0;
 
         for (int r = 1; r < len; r++) { // 右边界从1开始（至少两个字符）
             for (int l = 0; l < r; l++) { // 遍历左边界
