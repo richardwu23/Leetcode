@@ -4,6 +4,7 @@ public class L48旋转图像 {
 
 
     //先沿 对角线 翻转， 再水平翻转
+    //注意 对角线 翻转的写法， 和 水平翻转的写法
     public void rotate(int[][] matrix) {
 
         int rows = matrix.length;

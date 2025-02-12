@@ -4,7 +4,8 @@ public class L72编辑距离 {
     public int minDistance(String word1, String word2) {
 
         int len1=word1.length(),len2=word2.length();
-// dp[i][j] 表示将 word1 的前 i 个字符转换为 word2 的前 j 个字符的最小编辑距离
+        // dp[i][j] 将word1的前i个字符转换为 word2 的前j个字符的最小编辑距离
+        //len1+1,  len2+1 因为需要 考虑空串的情况
         int[][] dp=new int[len1+1][len2+1];
 
         for(int i=0;i<=len1;i++){

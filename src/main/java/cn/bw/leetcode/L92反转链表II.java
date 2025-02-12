@@ -19,15 +19,16 @@ public class L92反转链表II {
         }
 
         ListNode rightNode = pre;
+        ListNode leftNode = pre.next;
 
         //继续走 right 到 left 的距离
         for(int i=0;i<right-left+1;i++){
             rightNode = rightNode.next;
         }
 
-        ListNode leftNode = pre.next;
 
-        ListNode cur = rightNode.next;
+
+        ListNode backPart = rightNode.next;
 
         //断开
         pre.next = null;
@@ -36,7 +37,7 @@ public class L92反转链表II {
         reverse(leftNode);
 
         pre.next = rightNode;
-        leftNode.next = cur;
+        leftNode.next = backPart;
 
         return dummy.next;
     }

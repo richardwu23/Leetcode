@@ -3,6 +3,38 @@ package cn.bw.leetcode;
 public class L4寻找两个正序数组的中位数 {
 
 
+
+
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int m = nums1.length, n = nums2.length;
+        int total = m + n;
+
+        if (total % 2 == 1) {
+            return findKth(nums1, 0, nums2, 0, total / 2 + 1);
+        } else {
+            return (findKth(nums1, 0, nums2, 0, total / 2) +
+                    findKth(nums1, 0, nums2, 0, total / 2 + 1)) * 0.5;
+        }
+    }
+
+    private int findKth(int[] nums1, int i, int[] nums2, int j, int k) {
+        // 处理边界情况
+        if (i >= nums1.length) return nums2[j + k - 1]; // nums1 用完，直接取 nums2 的第 k 个
+        if (j >= nums2.length) return nums1[i + k - 1]; // nums2 用完，直接取 nums1 的第 k 个
+        if (k == 1) return Math.min(nums1[i], nums2[j]); // k == 1 直接返回最小值
+
+        // 计算新位置的索引
+        int mid1 = (i + k / 2 - 1 < nums1.length) ? nums1[i + k / 2 - 1] : Integer.MAX_VALUE;
+        int mid2 = (j + k / 2 - 1 < nums2.length) ? nums2[j + k / 2 - 1] : Integer.MAX_VALUE;
+
+        if (mid1 < mid2) {
+            return findKth(nums1, i + k / 2, nums2, j, k - k / 2);
+        } else {
+            return findKth(nums1, i, nums2, j + k / 2, k - k / 2);
+        }
+    }
+
+
     /**
      * i：数组 nums1 中分割的位置，左边有 i 个元素。
      * j：数组 nums2 中分割的位置，左边有 j 个元素。
@@ -18,10 +50,10 @@ public class L4寻找两个正序数组的中位数 {
      * 如果 nums1[i] >= nums2[j - 1]，说明 i 可能是正确分割点，分割线需要左移或保持不变。
      *
      */
-    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+    public double findMedianSortedArrays1(int[] nums1, int[] nums2) {
         // 确保 nums1 是较短的数组
         if (nums1.length > nums2.length) {
-            return findMedianSortedArrays(nums2, nums1);
+            return findMedianSortedArrays1(nums2, nums1);
         }
 
         int m = nums1.length;
