@@ -5,6 +5,7 @@ public class L718最长重复子数组 {
 
 
     //dp[i][j] 表示从 A[i] 和 B[j] 开始的最长公共子数组的长度。
+    // dp[n][m]=0 作为一个边界条件;
     //从后往前走
     public int findLength(int[] A, int[] B) {
         int n = A.length, m = B.length;

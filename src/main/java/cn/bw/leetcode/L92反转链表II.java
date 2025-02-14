@@ -13,7 +13,7 @@ public class L92反转链表II {
         dummy.next = head;
         ListNode pre = dummy;
 
-        //走到 left 前一个 节点
+        //走到 left 前一个 节点  注意 left-1
         for(int i=0;i<left-1;i++){
             pre = pre.next;
         }
