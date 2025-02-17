@@ -18,6 +18,7 @@ public class L221最大正方形 {
                     //dp[r][c] 表示左上角，dp[r+1][c] 表示左边，dp[r][c+1] 表示上边。
                     dp[r + 1][c + 1] = Math.min(dp[r][c],
                             Math.min(dp[r + 1][c], dp[r][c + 1])) + 1;
+                    //注意  dp[r+1][c+1]
                     side = Math.max(side, dp[r + 1][c + 1]);
                 }
             }

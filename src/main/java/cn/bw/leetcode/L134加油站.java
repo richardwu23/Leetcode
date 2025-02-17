@@ -1,5 +1,17 @@
 package cn.bw.leetcode;
 
+/**
+ * 计算总加油量和总消耗量：
+ *
+ * totalGas = sum(gas[i]) 记录总加油量。
+ * totalCost = sum(cost[i]) 记录总消耗量。
+ * 如果 totalGas < totalCost，说明无论从哪个站点出发，油都不够绕行一圈，返回 -1。
+ * 寻找可行的起点：
+ *
+ * 遍历每个站点，维护 当前油箱油量 tank。
+ * tank += gas[i] - cost[i] 表示从 i 号加油站出发，到达下一个加油站后的剩余油量。
+ * 如果 tank < 0，表示 无法从 start 到 i+1，需要将起点调整到 i+1，并重置 tank = 0。
+ */
 public class L134加油站 {
 
     public int canCompleteCircuit(int[] gas, int[] cost) {

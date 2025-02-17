@@ -17,7 +17,7 @@ public class L34排序数组起止位置 {
         while (right<len && nums[right]==target){
             right++;
         }
-
+        //注意
         return new int[]{left+1,right-1};
 
 
