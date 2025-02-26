@@ -16,9 +16,10 @@ public class L31下一个排列 {
     public void nextPermutation(int[] nums) {
 
         int len=nums.length;
+        //注意  i>0
         for(int i=len-1;i>0;i--){
             if(nums[i]>nums[i-1]){
-                //注意
+                //注意  sort(nums, i, len)
                 Arrays.sort(nums,i,len);
                 for(int j=i;j<len;j++){
                     if(nums[j]>nums[i-1]){

@@ -17,7 +17,7 @@ public class L5最长回文子串 {
         for (int i = 0; i < len; i++) {
             dp[i][i] = true;
         }
-
+        //注意  max=1
         int max = 1, begin = 0;
 
         for (int r = 1; r < len; r++) { // 右边界从1开始（至少两个字符）
