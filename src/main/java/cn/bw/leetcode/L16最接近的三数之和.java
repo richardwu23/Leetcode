@@ -20,34 +20,28 @@ public class L16最接近的三数之和 {
      */
     public int threeSumClosest(int[] nums, int target) {
 
-        int len=nums.length;
         Arrays.sort(nums);
-        //注意，  初始化result
-        int result=nums[0]+nums[1]+nums[2];
+        int ans = nums[0]+nums[1]+nums[2];
+        for(int i=0;i<nums.length-2;i++){
+            int l=i+1,r=nums.length-1;
 
-        for(int i=0;i<len-2;i++){
-            int left=i+1, right=len-1;
-
-            while (left<right){
-                int sum = nums[i]+nums[left]+nums[right];
+            while (l<r){
+                int sum = nums[i]+nums[l]+nums[r];
                 if(sum==target){
                     return target;
+                }else{
+                    if(Math.abs(sum-target)<Math.abs(ans-target)){
+                        ans = sum;
+                    }
+                    if(sum>target){
+                        r--;
+                    }else {
+                        l++;
+                    }
                 }
-                if(Math.abs(sum-target)<Math.abs(result-target)){
-                    result = sum;
-                }
-
-                if(sum>target){
-                    right--;
-                }else {
-                    left++;
-                }
-
             }
-
         }
-
-        return result;
+        return ans;
     }
 
 

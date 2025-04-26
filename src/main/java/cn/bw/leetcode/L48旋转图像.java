@@ -14,25 +14,29 @@ public class L48旋转图像 {
     // 将每一行的元素从左到右翻转
 
     public void rotate(int[][] matrix) {
+        int rows=matrix.length, cols=matrix[0].length;
 
-        int rows= matrix.length, cols=matrix[0].length;
         for(int r=0;r<rows;r++){
-            for(int c=r;c<rows;c++){
+            for(int c=r;c<cols;c++){
                 int t = matrix[r][c];
                 matrix[r][c]=matrix[c][r];
                 matrix[c][r]=t;
             }
         }
+
         for(int r=0;r<rows;r++){
             // 遍历当前行的前一半元素
-            for(int c=0;c<rows/2;c++){
+            for(int c=0;c<cols/2;c++){
                 int t = matrix[r][c];
                 //注意 rows-c-1
-                matrix[r][c]=matrix[r][rows-c-1];
-                matrix[r][rows-c-1]=t;
+                matrix[r][c]=matrix[r][cols-c-1];
+                matrix[r][cols-c-1] = t;
             }
         }
 
+
+
     }
+
 
 }

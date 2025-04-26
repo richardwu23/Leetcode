@@ -17,50 +17,79 @@ package cn.bw.leetcode;
  */
 public class L37解数独 {
 
-    boolean[][] row = new boolean[9][9];    // 记录每一行数字 1-9 是否已被使用
-    boolean[][] col = new boolean[9][9];    // 记录每一列数字 1-9 是否已被使用
-    boolean[][][] cell = new boolean[3][3][9]; // 记录每个 3x3 子宫格数字 1-9 是否已被使用
-
     public void solveSudoku(char[][] board) {
-        //初始化
-        for (int r = 0; r < 9; r++) {
-            for (int c = 0; c < 9; c++) {
-                if (board[r][c] != '.') {  // 如果该位置已填数字
-                    int v = board[r][c] - '1';  // 将字符转换为整数索引 (0-8)
-//                     row[r][v]：表示数字 v（取值范围为 0 到 8，表示数独中的数字 1 到 9）已经在第 r 行中出现。
-//                     r 是行号，v 是数字的索引（board[r][c] - '1' 计算得到）。
-                    row[r][v] = col[c][v] = cell[r / 3][c / 3][v] = true;
+
+        // rowUsed[i][num] 表示第 i 行是否用过 num（1~9）
+        boolean[][] row = new boolean[9][10];
+        // colUsed[j][num] 表示第 j 列是否用过 num
+        boolean[][] col = new boolean[9][10];
+        // boxUsed[i][j][num] 表示第 i 行 j 列的 3x3 子盒是否用过 num
+        boolean[][][] cell = new boolean[3][3][10];
+
+        // 初始化：扫描整个数独盘面，把已经填好的数字在标记数组中做标记
+        for(int r = 0; r < board.length; r++){
+            for(int c = 0; c < board[0].length; c++) {
+                int num = board[r][c] - '0';
+                if(1 <= num && num <= 9){
+                    row[r][num] = true;
+                    col[c][num] = true;
+                    cell[r/3][c/3][num] = true;
                 }
             }
         }
-
-        backtrack(board, 0, 0);
+        backtrack(board, row, col, cell, 0, 0);
     }
 
-    //从左上开始 判断每行， 每列，每个cell 是否符合规则
-    private boolean backtrack(char[][] board, int x, int y) {
-        // 如果列到达末尾，转到下一行的第一列
-        if (y == 9) return backtrack(board, x + 1, 0);
-        // 如果行到达末尾，说明整个数独已成功填充
-        if (x == 9) return true;
-        // 如果当前位置已有数字，跳过到下一列
-        if (board[x][y] != '.') return backtrack(board, x, y + 1);
-
-        for (int i = 0; i < 9; i++) {  // 尝试放置数字 1-9
-            if (!row[x][i] && !col[y][i] && !cell[x / 3][y / 3][i]) {
-                board[x][y] = (char) ('1' + i);  // 将数字 i 转为字符放置到单元格
-                // 更新状态
-                row[x][i] = col[y][i] = cell[x / 3][y / 3][i] = true;
-                if (backtrack(board, x, y + 1)) {  // 尝试填充下一单元格
-                    break;  // 如果成功，跳出循环
-                } else {  // 如果失败，回溯
-                    board[x][y] = '.';  // 恢复单元格为空
-                    row[x][i] = col[y][i] = cell[x / 3][y / 3][i] = false;  // 恢复状态
-                }
+    // 回溯函数，尝试从 (row, col) 开始填盘面
+    private boolean backtrack(char[][] board,
+                                        boolean[][] row,
+                                        boolean[][] col,
+                                        boolean[][][] cell,
+                                        int r,
+                                        int c) {
+        // 处理列越界，换行进入下一行的起始列
+        if(c == board[0].length){
+            c = 0;
+            r++;
+            // 如果 row 也越界了，说明整个盘面填完了，返回 true
+            if(r == board.length){
+                return true;
             }
         }
-        // 返回是否当前单元格已填入数字
-        return board[x][y] != '.';
+        // 如果当前位置是空格（'.'），尝试填 1 到 9
+        if(board[r][c] == '.') {
+            for(int num = 1; num <= 9; num++){
+                // 检查当前数字是否在对应的行、列、3x3 方格中未被使用
+                boolean canUsed = !(row[r][num] || col[c][num]
+                        || cell[r/3][c/3][num]);
+                if(canUsed){
+                    // 标记使用
+                    row[r][num] = true;
+                    col[c][num] = true;
+                    cell[r/3][c/3][num] = true;
+
+                    // 将数字填入盘面
+                    board[r][c] = (char)('0' + num);
+
+                    // 继续递归填下一个格子
+                    if(backtrack(board, row, col, cell, r, c + 1)){
+                        return true; // 成功返回
+                    }
+
+                    // 回溯：撤销填入
+                    board[r][c] = '.';
+                    row[r][num] = false;
+                    col[c][num] = false;
+                    cell[r/3][c/3][num] = false;
+                }
+            }
+        } else {
+            // 如果当前格子不是空格，直接跳到下一个格子
+            return backtrack(board, row, col, cell, r, c + 1);
+        }
+
+        // 所有数字尝试失败，返回 false
+        return false;
     }
 
 

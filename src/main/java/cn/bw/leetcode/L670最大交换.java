@@ -21,6 +21,7 @@ public class L670最大交换 {
 
         // 遍历数字，尝试找到更大的数字进行交换
         for (int i = 0; i < len; i++) {
+            //注意  d > digits[i] - '0';
             for (int d = 9; d > digits[i] - '0'; d--) {
                 if (lastIndex[d] > i) {
                     // 交换数字

@@ -95,7 +95,12 @@ public class L4寻找两个正序数组的中位数 {
     }
 
 
-
+    /**
+     * left 中位数 左边界， right 中位数 右边界
+     *
+     *
+     *
+     */
     public double findMedianSortedArrays0(int[] nums1, int[] nums2) {
         int len1=nums1.length, len2=nums2.length;
 
@@ -114,6 +119,7 @@ public class L4寻找两个正序数组的中位数 {
 
     }
 
+    //找到 nums1 和 nums2 中 第k小的数
     private int getKth(int[] nums1,int s1,int e1,
                        int[] nums2, int s2,int e2, int k){
 

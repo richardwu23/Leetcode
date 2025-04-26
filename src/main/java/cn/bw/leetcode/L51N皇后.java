@@ -9,7 +9,7 @@ public class L51N皇后 {
     /**
      * 回溯算法，
      * 步骤， 逐行放
-     * q[i] 表达 i行 放的位置
+     * q[i] 表达 i行 放的位置。 q[1]=3  表示 第1行 在 第3列
      * 总共几个方法，
      * 每个方法的含义 与参数
      *
@@ -50,7 +50,7 @@ public class L51N皇后 {
         }
     }
 
-    // 检查当前摆放是否合法
+    // 检查当前摆放是否合法， row 表示 current row。
     private boolean isValid(int[] q, int row) {
         for (int i = 0; i < row; i++) {
             // 检查同列冲突

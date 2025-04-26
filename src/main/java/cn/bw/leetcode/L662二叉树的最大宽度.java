@@ -31,7 +31,7 @@ public class L662二叉树的最大宽度 {
         queue.add(new TreeNode(1, root.left, root.right));
 
         while (!queue.isEmpty()) {
-            int cnt = queue.size(), start = 0, end = -1;
+            int cnt = queue.size(), start = 0, end = 0;
 
             for (int i = 0; i < cnt; i++) {
                 TreeNode cur = queue.poll();
